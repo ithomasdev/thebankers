@@ -7,4 +7,5 @@ To run your project, navigate to the directory and run one of the following npm 
 
 
 New standards for expo -- When you do an npm install in the project, expo will install (I THINK)
+
 npx expo start
