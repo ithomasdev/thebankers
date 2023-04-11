@@ -1,3 +1,5 @@
+*Current status: Login screen completed, just need to link login and register functionality when DB is set up*
+
 To run your project, navigate to the directory and run one of the following npm commands.
 
 - cd Barcode
