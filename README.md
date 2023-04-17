@@ -1,8 +1,13 @@
 *Current status: Login screen completed, just need to link login and register functionality when DB is set up*
 
-To run your project, navigate to the directory and run one of the following npm commands.
+To run your project, navigate to the directory.
 
-- cd Barcode
+- cd BarcodeScanner
+
+Then, install dependencies
+- npm install 
+
+Lastly, choose which system you'd like to run on. Ours works best on ios.
 - npm run android
 - npm run ios # you need to use macOS to build the iOS project - use the Expo app if you need to do iOS development without a Mac
 - npm run web
