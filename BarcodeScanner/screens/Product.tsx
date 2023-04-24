@@ -5,7 +5,7 @@ import { Button, Card, Icon, Overlay } from 'react-native-elements';
 import { PricingCard } from '@rneui/themed';
 import { getAuth, signOut } from 'firebase/auth';
 import axios from 'axios';
-import { addDoc, collection, getDocs, where } from 'firebase/firestore';
+import { addDoc, collection, getDocs, where, query } from 'firebase/firestore';
 import { app, database } from '../config/firebase';
 import QRCode from 'react-native-qrcode-svg';
 
@@ -31,17 +31,28 @@ export default function ProductScreen({ route, navigation }: any) {
 
     const addToDB = async () => {
       try {  
-        const docRef = await addDoc(collection(database, "Products"),
-          {
-            uid: auth.currentUser.uid,
-            title: product.title,
-            online_stores: product.online_stores,
-            description: product.description,
-            images: product.images,
-            manufacturer: product.manufacturer,
-            barcode: productID
+        const collectionRef = collection(database, "Products");
+
+        const queryRef = query(collectionRef, where('title', '==', product.title), where('uid', '==', auth.currentUser.uid));
+
+        await getDocs(queryRef).then((snapshot) => {
+          if (!snapshot.empty) {
+            Alert.alert('Document already in favorites');
+          } else {
+            addDoc(collection(database, "Products"),
+              {
+                uid: auth.currentUser.uid,
+                title: product.title,
+                online_stores: product.online_stores,
+                description: product.description,
+                images: product.images,
+                manufacturer: product.manufacturer,
+                barcode: productID
+              }
+            );
           }
-        );
+        });
+        
       } catch (error) {
         console.error("Error loading document", error)
       }
@@ -98,7 +109,7 @@ export default function ProductScreen({ route, navigation }: any) {
           }
         }, [url]);
       
-        return <Button title={children} style={{padding: 7}} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: '#4f9deb'}} onPress={handlePress} />;
+        return <Button title={children} style={{padding: 7}} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: 'grey'}} onPress={handlePress} />;
       };
 
     if (product) {
@@ -107,19 +118,19 @@ export default function ProductScreen({ route, navigation }: any) {
             <ScrollView style={{width: '100%'}}>
                 <Card style={{width: '100%'}}>
                   <Card.Title><Text style={{ fontSize: 20 }}>{product.title}</Text></Card.Title>
-                  <View style={{alignItems: 'center', height: 350, width: '100%'}}>
+                  <View style={{alignItems: 'center', height: 350, width: '100%' }}>
                     <Image 
-                        style={{ width: '100%', height: '100%'}}
-                        source={{ uri: product.images[0]}} />
+                        style={{ width: '100%', height: '100%' }}
+                        source={{ uri: product.images[0] }} />
                   </View>
                   <View style={{ }}>
-                    <Button style={{ }} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: '#4f9deb'}} title="Add to favorites"
+                    <Button style={{ padding: 7 }} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: 'grey'}} title="Add to favorites"
                       icon={<Icon type='font-awesome' name='star' color='#4f9deb' style={{paddingRight: 10}} />} 
                       onPress={() => {
                       addToDB();
                       navigation.navigate('Profile');
                     }} />
-                    <Button style={{ }} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: '#4f9deb'}} title="Return Home" 
+                    <Button style={{ padding: 7 }} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: 'grey'}} title="Return Home" 
                       icon={<Icon type='font-awesome' name='home' color='#4f9deb' style={{paddingRight: 10}} />}
                       onPress={() => {
                         navigation.navigate('Home')
@@ -134,7 +145,7 @@ export default function ProductScreen({ route, navigation }: any) {
                                                 <Text style={{ color: 'black', fontSize: 20, fontWeight: 'bold' }}>{store.price}</Text>
                                               </View>
                                               <OpenURLButton url={store.url}>Open Store</OpenURLButton>
-                                              <Button style={{padding: 7}} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: '#4f9deb'}} title="Share"
+                                              <Button style={{padding: 7}} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: 'grey'}} title="Share"
                                                 onPress={() => {
                                                   setCurrentURL({store});
                                                   setVisible(true);
