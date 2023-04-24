@@ -12,7 +12,7 @@
 Given that this is a mobile application, you will need a phone with the Expo Go app installed
 
 ## Run steps
-1. Clone this directory
+1. Clone this directory or download the ZIP file in canvas
 2. CD into the BarcodeScanner directory
 3. Preform an ```npm install``` to download all of the modules needed
 4. Enter ```npx expo start``` into your terminal
