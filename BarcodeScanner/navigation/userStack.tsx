@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from "@rneui/base";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Text } from 'react-native-elements';
 import HomeScreen from '../screens/Home';
 import Scanner from '../screens/Scanner';
 import Product from '../screens/Product';
@@ -17,12 +18,14 @@ export default function UserStack() {
           name="Home"
           component={HomeScreen}
           options={({ navigation }) => ({
-            title: 'Discount Scan',
+            headerTitle: () => (
+              <Text style={{ fontSize: 20, color: 'grey'}}>Discount Scan</Text>
+          ),
             headerLeft: () => (
-              <Icon name="account-circle" style={{ paddingLeft: 20 }} onPress={() => navigation.navigate('Profile', {screen: 'Profile' })} />
+              <Icon name="account-circle" style={{ paddingLeft: 20 }} color="grey" onPress={() => navigation.navigate('Profile', {screen: 'Profile' })} />
             ),
             headerRight: () => (
-              <Icon type="font-awesome" name="barcode" style={{ paddingRight: 20 }} onPress={() => navigation.navigate('Scanner', {screen: 'Scanner' })} />
+              <Icon type="font-awesome" name="barcode" style={{ paddingRight: 20 }} color="grey" onPress={() => navigation.navigate('Scanner', {screen: 'Scanner' })} />
             )
           })}
         />

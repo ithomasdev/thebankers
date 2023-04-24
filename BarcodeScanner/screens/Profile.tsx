@@ -76,12 +76,12 @@ export default function ProfileScreen({ route, navigation }: any) {
                             source={{ uri: item.images[0]}} />
                     </View>
                     <Card.Title style={{fontSize: 15}}>{item.title}</Card.Title>
-                    <Button style={{ }} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: '#4f9deb', fontSize: 17}} title="Go to item"
+                    <Button style={{ padding: 3 }} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: 'grey', fontSize: 17}} title="Go to item"
                       icon={<Icon type='font-awesome' name='star' color='#4f9deb' style={{paddingRight: 10}} />} 
                       onPress={() => {
                       navigation.navigate('Product', {product: item.barcode});
                     }} />
-                    <Button style={{ }} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: '#4f9deb', fontSize: 17}} title="Delete" 
+                    <Button style={{ padding: 3 }} buttonStyle={{ backgroundColor: 'white' }} titleStyle={{ color: 'grey', fontSize: 17}} title="Delete" 
                       icon={<Icon type='font-awesome' name='trash' color='#4f9deb' style={{paddingRight: 10}} />}
                       onPress={() => {
                         deleteDocument(item.title);
@@ -106,7 +106,7 @@ export default function ProfileScreen({ route, navigation }: any) {
                 {items && <Text style={{paddingBottom: 20 }}>You have {items.length} saved Item(s)</Text> }
                 {!items && <Text style={{paddingBottom: 20 }}>You have 0 saved Item(s)</Text> }
                 <Card.Divider />
-                <ScrollView style={{height: '80%'}}>
+                <ScrollView style={{height: '70%'}}>
                     {content}
                 </ScrollView>
                 
