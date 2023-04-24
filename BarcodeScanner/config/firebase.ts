@@ -2,6 +2,7 @@
 import { initializeApp } from "firebase/app";
 import 'firebase/auth';
 import Constants from 'expo-constants';
+import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -18,7 +19,9 @@ const firebaseConfig = {
   measurementId: Constants.manifest?.extra?.firebaseMeasurementId
 };
 
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const database = getFirestore(app);
 
-export default app;
+export { app, database };

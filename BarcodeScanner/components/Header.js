@@ -10,10 +10,13 @@ class AppHeader extends Component {
             <>
             <SafeAreaView style={styles.container}>
                 <Header
-                    leftComponent={{
-                        icon: 'menu',
-                        color: '#fff'
-                    }}
+                    leftComponent={
+                        <View style={styles.headerRight}>
+                            <TouchableOpacity>
+                                <Icon name="profile" color="black" onPress={StackActions.push('Profile')} />
+                            </TouchableOpacity>
+                        </View>
+                    }
                     centerComponent={{
                         text: 'Discount Scan',
                         style: styles.heading

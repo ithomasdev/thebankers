@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { StackActions } from '@react-navigation/native';
+import { Icon } from 'react-native-elements';
 
-export default function Scanner() {
+export default function Scanner({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -17,7 +19,7 @@ export default function Scanner() {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    navigation.navigate('Product', {product: data});
   };
 
   if (hasPermission === null) {
@@ -33,7 +35,20 @@ export default function Scanner() {
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
       />
-      {scanned && <Button title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+      <TouchableOpacity style={{
+        position: 'absolute',
+        top: 40, 
+        right: 20, 
+        backgroundColor: '#fff', 
+        padding: 10, 
+        borderRadius: 5,
+      }}
+      onPress={() => {
+        navigation.navigate('Home');
+      }}
+      >
+        <Icon type="material" name="close" />
+      </TouchableOpacity>
     </View>
   );
 }
@@ -43,6 +58,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.7)'
   },
 });
 

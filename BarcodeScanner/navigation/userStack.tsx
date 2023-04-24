@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/Home';
 import Scanner from '../screens/Scanner';
+import Product from '../screens/Product';
+import Profile from '../screens/Profile';
 
 const Stack = createStackNavigator();
 
@@ -16,12 +18,17 @@ export default function UserStack() {
           component={HomeScreen}
           options={({ navigation }) => ({
             title: 'Discount Scan',
+            headerLeft: () => (
+              <Icon name="account-circle" style={{ paddingLeft: 20 }} onPress={() => navigation.navigate('Profile', {screen: 'Profile' })} />
+            ),
             headerRight: () => (
-              <Icon name="scanner" onPress={() => navigation.navigate('Scanner', {screen: 'Scanner' })} />
+              <Icon type="font-awesome" name="barcode" style={{ paddingRight: 20 }} onPress={() => navigation.navigate('Scanner', {screen: 'Scanner' })} />
             )
           })}
         />
         <Stack.Screen name="Scanner" component={Scanner} options={{ headerShown: false}}/>
+        <Stack.Screen name="Product" component={Product} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
   );
