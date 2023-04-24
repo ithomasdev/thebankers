@@ -26,13 +26,13 @@ Finally, the app should load without errors. However, there are a few known erro
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;"
 >
-    <img src="https://i.ibb.co/SXks5Br/9-DFE8437-EFD5-474-C-807-A-03-F2-DC8-C0360.png" height="700" width="300" />
-    <img src="https://i.ibb.co/SXks5Br/9-DFE8437-EFD5-474-C-807-A-03-F2-DC8-C0360.png" height="700" width="300" />
-    <img src="https://i.ibb.co/wd5BKMd/82334-AB6-5469-4-B12-A579-95-A7-A1-C1-CAF9.png" height="700" width="300" />
-    <img src="https://i.ibb.co/Jvr2g4M/BCE41329-33-AD-4-C68-9333-A50-EBEBE16-AF.png" height="700" width="300" />
-    <img src="https://i.ibb.co/cxcDcYf/685586-AA-0-C0-C-46-C8-8-E6-B-E23-CCAFC3-BDB.png" height="700" width="300" />
-    <img src="https://i.ibb.co/B27zqx6/E09-F7429-A057-42-C3-94-F1-85675308-FD51.png" height="700" width="300" />
-    <img src="https://i.ibb.co/4j1NL1X/6-F044553-C672-41-E2-B101-7-C67412-F2-E78.png" height="700" width="300" />
+    <img src="https://i.ibb.co/SXks5Br/9-DFE8437-EFD5-474-C-807-A-03-F2-DC8-C0360.png" height="700" width="350" />
+    <img src="https://i.ibb.co/SXks5Br/9-DFE8437-EFD5-474-C-807-A-03-F2-DC8-C0360.png" height="700" width="350" />
+    <img src="https://i.ibb.co/wd5BKMd/82334-AB6-5469-4-B12-A579-95-A7-A1-C1-CAF9.png" height="700" width="350" />
+    <img src="https://i.ibb.co/Jvr2g4M/BCE41329-33-AD-4-C68-9333-A50-EBEBE16-AF.png" height="700" width="350" />
+    <img src="https://i.ibb.co/cxcDcYf/685586-AA-0-C0-C-46-C8-8-E6-B-E23-CCAFC3-BDB.png" height="700" width="350" />
+    <img src="https://i.ibb.co/B27zqx6/E09-F7429-A057-42-C3-94-F1-85675308-FD51.png" height="700" width="350" />
+    <img src="https://i.ibb.co/4j1NL1X/6-F044553-C672-41-E2-B101-7-C67412-F2-E78.png" height="700" width="350" />
 </div>
 
 ### Errors & Solutions
