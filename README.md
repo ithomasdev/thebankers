@@ -35,5 +35,3 @@ Finally, the app should load without errors. However, there are a few known erro
     <img src="https://i.ibb.co/4j1NL1X/6-F044553-C672-41-E2-B101-7-C67412-F2-E78.png" height="700" width="350" />
 </div>
 
-### Errors & Solutions
-
