@@ -3,7 +3,6 @@ import { StatusBar, StyleSheet, Text, View, Image } from 'react-native';
 import { useAuthentication } from '../utils/hooks/useAuthentication';
 import { Button, Card } from 'react-native-elements';
 import { getAuth, signOut } from 'firebase/auth';
-import AppHeader from '../components/Header'
 
 const auth = getAuth();
 
@@ -20,10 +19,10 @@ export default function HomeScreen({ route, navigation }: any) {
           <Image style={{ height: 250, width: '100%' }} source={require('../assets/wave-haikei.png')}/>
         </View>
       </Card>
-      <Card style={{ width: '100%'}} containerStyle={{ padding: 0}}>
+      <Card style={styles.fullWidth} containerStyle={{ padding: 0}}>
         <Button buttonStyle={{ backgroundColor: '#4f9deb', height: 70 }} titleStyle={{ color: '#fff', fontSize: 24}} title="Start Scanning" onPress={() => navigation.navigate('Scanner', {screen: 'Scanner' })}/>
       </Card>
-      <Card style={{ width: '100%'}} containerStyle={{ padding: 0}}>
+      <Card style={styles.fullWidth} containerStyle={{ padding: 0}}>
         <Button buttonStyle={{ backgroundColor: '#4f9deb', height: 70 }} titleStyle={{ color: '#fff', fontSize: 24}} title="Check previously scanned items" onPress={() => navigation.navigate('Profile', {screen: 'Profile' })}/>
       </Card>
     </View>
@@ -36,7 +35,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f3f3f3',
   },
-  button: {
-    marginTop: 10
+  fullWidth: {
+    width: '100%'
   }
 });

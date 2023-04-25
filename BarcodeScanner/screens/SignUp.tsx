@@ -45,7 +45,7 @@ const SignUpScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
     return (
         <View style={styles.wrapper}>
             {!!value.error ? <View style={styles.error}><Text>{value.error}</Text></View> : null}
-            <Image source={{ uri: '/Users/Logan/Barcode_working/src/assets/Barcode_Logo.png' }} style={styles.image}></Image>
+            <Image source={ require('../assets/Barcode_Logo.png') } style={styles.image}></Image>
             <View style={styles.inputField}>
                 <TextInput
                     placeholderTextColor='#444'

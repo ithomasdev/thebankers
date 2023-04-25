@@ -20,8 +20,6 @@ export default function ProductScreen({ route, navigation }: any) {
     const productID = route.params.product;
     
     let content;
-
-    let qrPopover;
     
     let currentURL;
 
@@ -59,20 +57,22 @@ export default function ProductScreen({ route, navigation }: any) {
     }
 
     console.log(productID);
+    
+    let errorOccured = false;
 
     const getPrices = async () => {
       try {
+
         const source = axios.CancelToken.source();
 
         const timeoutId = setTimeout(() => {
           source.cancel('Timeout reached');
-          navigation.navigate('Home');
-          Alert.alert(`Please try again.`);
+          errorOccured = true;
         }, 30000);
 
         const response = await axios.get('https://barcodes1.p.rapidapi.com/', {
             headers: {
-                'X-RapidAPI-Key': '9bca22c3admsh626b98e7ec37f37p1b32f8jsnac77a6184014',
+                'X-RapidAPI-Key': 'c72f5c9c24msh91c95a8bff839c7p1855efjsn3cea46df8304',
                 'X-RapidAPI-Host': 'barcodes1.p.rapidapi.com'
             },
             params: {query: productID},
@@ -81,9 +81,18 @@ export default function ProductScreen({ route, navigation }: any) {
         clearTimeout(timeoutId);
 
         if (response.data.nextPage === null) {
-          navigation.navigate('Home');
-          Alert.alert(`Please try again.`);
+          errorOccured = true;
         }
+
+        if (productID === null) {
+          errorOccured = true;
+        }
+
+        if (errorOccured) {
+            navigation.navigate('Home');
+            Alert.alert(`Please try again.`);
+        }
+
         setProduct(response.data.product);
       } catch (error) {
         console.log(error);
@@ -193,8 +202,5 @@ container: {
     backgroundColor: '#f3f3f3',
     alignItems: 'center',
     justifyContent: 'center',
-},
-button: {
-    marginTop: 10
 }
 });
